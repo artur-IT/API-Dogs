@@ -56,7 +56,7 @@ class DogsBreeds {
               const a = document.createElement("a");
               divLink.appendChild(a);
               a.classList.add("breeds__link__dog");
-              a.textContent = `${elem[1][i].toUpperCase()} ${elem[0].toUpperCase()}`;
+              a.textContent = `${elem[1][i]} ${elem[0]}`;
               a.setAttribute("id", `${img.message}`);
             });
         }
@@ -70,7 +70,7 @@ class DogsBreeds {
             const a = document.createElement("a");
             divLink.appendChild(a);
             a.classList.add("breeds__link__dog");
-            a.textContent = elem[0].toUpperCase();
+            a.textContent = elem[0];
             a.setAttribute("id", `${img.message}`);
           });
       }
