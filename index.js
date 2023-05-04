@@ -94,5 +94,5 @@ document.addEventListener("DOMContentLoaded", () => {
         scrollTo(0, 0);
       });
     }
-  }, 1000);
+  }, 2000);
 });
