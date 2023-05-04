@@ -37,7 +37,6 @@ img {
 
 .breeds__link {
   display: flex;
-  flex-basis: 100%;
   min-width: 570px;
   max-width: 1140px;
   flex-wrap: wrap;
@@ -56,6 +55,7 @@ img {
   height: 50px;
   background-color: chartreuse;
   cursor: pointer;
+  transition: 0.5s;
 }
 
 a {
@@ -63,7 +63,6 @@ a {
   font-size: 0.9rem;
 }
 a:hover {
-  /* font-weight: 700; */
   color: white;
   background-color: red;
 }

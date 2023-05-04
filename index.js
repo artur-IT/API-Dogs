@@ -1,6 +1,7 @@
+const urlMain = "https://dog.ceo/api";
 class DogRandom {
   constructor() {
-    fetch("https://dog.ceo/api/breeds/image/random")
+    fetch(`${urlMain}/breeds/image/random`)
       .then((dog) => {
         return dog.json();
       })
@@ -23,7 +24,7 @@ class DogRandom {
 
 class DogsBreeds {
   constructor() {
-    fetch("https://dog.ceo/api/breeds/list/all")
+    fetch(`${urlMain}/breeds/list/all`)
       .then((breeds) => {
         return breeds.json();
       })
@@ -42,12 +43,11 @@ class DogsBreeds {
     const breedsE = Object.entries(list);
     const divLink = document.body.querySelector("div.breeds__link");
 
-    // SUBB REED
+    // SUBBREED
     breedsE.forEach((elem) => {
       if (elem[1] != 0) {
         for (let i = 0; i < elem[1].length; i++) {
-          // console.log(elem[1][i]);
-          fetch(`https://dog.ceo/api/breed/${elem[0]}/${elem[1][i]}/images/random`)
+          fetch(`${urlMain}/breed/${elem[0]}/${elem[1][i]}/images/random`)
             .then((img) => {
               return img.json();
             })
@@ -61,7 +61,7 @@ class DogsBreeds {
             });
         }
       } else {
-        fetch(`https://dog.ceo/api/breed/${elem[0]}/images/random`)
+        fetch(`${urlMain}/breed/${elem[0]}/images/random`)
           .then((img) => {
             return img.json();
           })
@@ -78,9 +78,6 @@ class DogsBreeds {
   };
 }
 
-// przenieś na górę!!!
-// scrollTo(0,0)
-
 new DogRandom();
 new DogsBreeds();
 
@@ -91,9 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const divRandom = document.querySelector("div.random h1");
 
     for (let i = 0; i < test.length; i++) {
-      // console.log(test[i]);
       test[i].addEventListener("click", () => {
-        // const breedName= test[i
         div.innerHTML = `<img src="${test[i].attributes.id.value}"> <p>${test[i].firstChild.data.toUpperCase()}</p>`;
         divRandom.textContent = "";
         scrollTo(0, 0);
