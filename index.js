@@ -1,4 +1,6 @@
 const urlMain = "https://dog.ceo/api";
+const tabBreeds = [];
+
 class DogRandom {
   constructor() {
     fetch(`${urlMain}/breeds/image/random`)
@@ -18,7 +20,8 @@ class DogRandom {
 
   dogRandom = (url) => {
     const div = document.body.querySelector("div.breed__dog");
-    div.innerHTML = `<img src="${url}">`;
+    const cutURL = url.slice(30);
+    div.innerHTML = `<img src="${url}" alt="${cutURL}" longdesc="${cutURL}">`;
   };
 }
 
@@ -53,11 +56,10 @@ class DogsBreeds {
             })
 
             .then((img) => {
-              const a = document.createElement("a");
-              divLink.appendChild(a);
-              a.classList.add("breeds__link__dog");
-              a.textContent = `${elem[1][i]} ${elem[0]}`;
-              a.setAttribute("id", `${img.message}`);
+              tabBreeds.push({
+                name: `${elem[0]} ${elem[1][i]}`,
+                link: img.message,
+              });
             });
         }
       } else {
@@ -67,32 +69,47 @@ class DogsBreeds {
           })
 
           .then((img) => {
-            const a = document.createElement("a");
-            divLink.appendChild(a);
-            a.classList.add("breeds__link__dog");
-            a.textContent = elem[0];
-            a.setAttribute("id", `${img.message}`);
+            tabBreeds.push({
+              name: `${elem[0]}`,
+              link: img.message,
+            });
           });
       }
     });
   };
 }
 
+const toHTML = () => {
+  const divLink = document.body.querySelector("div.breeds__link");
+  for (let i = 0; i < tabBreeds.length; i++) {
+    const a = document.createElement("a");
+    divLink.appendChild(a);
+    a.classList.add("breeds__link__dog");
+    a.textContent = `${tabBreeds[i].name} `;
+    a.setAttribute("id", `${tabBreeds[i].link}`);
+  }
+};
+
 new DogRandom();
 new DogsBreeds();
 
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
+    toHTML();
     const test = document.getElementsByClassName("breeds__link__dog");
     const div = document.querySelector("div.breed__dog");
     const divRandom = document.querySelector("div.random h1");
 
     for (let i = 0; i < test.length; i++) {
       test[i].addEventListener("click", () => {
-        div.innerHTML = `<img src="${test[i].attributes.id.value}"> <p>${test[i].firstChild.data.toUpperCase()}</p>`;
+        div.innerHTML = `<img src="${test[i].attributes.id.value}" alt="${test[i].innerHTML}" longdesc="${test[i].innerHTML}"> <p>${test[
+          i
+        ].firstChild.data.toUpperCase()}</p>`;
         divRandom.textContent = "";
         scrollTo(0, 0);
       });
     }
-  }, 2000);
+  }, 1500);
 });
+
+// test;
