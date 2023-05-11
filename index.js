@@ -21,7 +21,7 @@ class DogRandom {
   dogRandom = (url) => {
     const div = document.body.querySelector("div.breed__dog");
     const cutURL = url.slice(30);
-    div.innerHTML = `<img src="${url}" alt="${cutURL}" longdesc="${cutURL}">`;
+    div.innerHTML = `<img src="${url}" alt="${cutURL}" title="${cutURL}">`;
   };
 }
 
@@ -135,15 +135,14 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     toHTML();
     // add to DOM img with description
-    const test = document.getElementsByClassName("breeds__link__dog");
+    const link = document.getElementsByClassName("breeds__link__dog");
     const div = document.querySelector("div.breed__dog");
     const divRandom = document.querySelector("div.random h1");
 
-    for (let i = 0; i < test.length; i++) {
-      test[i].addEventListener("click", () => {
-        div.innerHTML = `<img src="${test[i].attributes.id.value}" alt="${test[i].innerHTML}" longdesc="${test[i].innerHTML}"> <p>${test[
-          i
-        ].firstChild.data.toUpperCase()}</p>`;
+    for (let i = 0; i < link.length; i++) {
+      link[i].addEventListener("click", () => {
+        div.innerHTML = `<img src="${link[i].attributes.id.value}" alt="${link[i].innerHTML}"> 
+        <p>${link[i].firstChild.data.toUpperCase()}</p>`;
         divRandom.textContent = "";
         scrollTo(0, 0);
       });
