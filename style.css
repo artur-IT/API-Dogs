@@ -1,11 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&family=Roboto+Condensed:wght@300&display=swap");
 
-* {
+body {
   margin: 0;
   padding: 0;
-}
-
-body {
   background-image: url("bg.jpg");
   font-family: "Roboto", sans-serif;
 }
@@ -72,7 +69,6 @@ p {
   font-size: 1.5rem;
 }
 
-/* media query! */
 @media (max-width: 450px) and (orientation: portrait) {
   body {
     background-image: url("bg.jpg");
