@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&family=Roboto+Condensed:wght@300&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("bg.jpg");
+  font-family: "Roboto", sans-serif;
+}
+.wrap {
+  margin: 10px 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 430px;
+  max-width: 1200px;
+  text-align: center;
+}
+div.random {
+  margin-top: 50px;
+  max-width: 100%;
+}
+div.breeds h1 {
+  min-width: 570px;
+  width: 100%;
+  margin: 100px 0 20px 0;
+}
+
+img {
+  margin-top: 20px;
+  max-width: 600px;
+  border: 1px solid black;
+  box-shadow: 10px 10px 15px 5px black;
+}
+
+.breeds__link {
+  display: flex;
+  min-width: 570px;
+  max-width: 1140px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  text-transform: capitalize;
+}
+
+.breeds__link__dog {
+  margin: 5px 5px;
+  padding: 0 10px;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 3rem;
+  width: 250px;
+  height: 50px;
+  background-color: chartreuse;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+a {
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+a:hover {
+  color: white;
+  background-color: red;
+}
+
+p {
+  margin-top: 40px;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 450px) and (orientation: portrait) {
+  body {
+    background-image: url("bg.jpg");
+    background-size: 250%;
+  }
+  .wrap {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 450px;
+    font-size: 0.7rem;
+  }
+
+  div.random {
+    margin-top: 0;
+    text-align: center;
+  }
+  div.breeds h1 {
+    min-width: 170px;
+    width: 100%;
+    margin: 50px 0 10px 0;
+  }
+  img {
+    max-width: 350px;
+  }
+  .breeds__link {
+    min-width: 0;
+    max-width: 450px;
+    text-transform: capitalize;
+  }
+  .breeds__link__dog {
+    padding: 0 10px;
+    line-height: 3rem;
+    width: 170px;
+    height: 50px;
+    background-color: chartreuse;
+    font-size: 1rem;
+  }
+  p {
+    margin-top: 30px;
+    font-size: 1.3rem;
+  }
+}
