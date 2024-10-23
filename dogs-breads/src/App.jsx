@@ -1,81 +1,89 @@
 import { useState, useEffect } from "react";
-import RandomDog from "../src/components/RandomDog";
+// import RandomDog from "../src/components/RandomDog";
 import DogBreeds from "../src//components/DogBreeds";
+import BreedDisplay from "./components/BreedDisplay";
 
 const API_URL = "https://dog.ceo/api";
-const breedsArray = [];
 
 function App() {
-  const [breeds, setBreeds] = useState(breedsArray);
+  const [breeds, setBreeds] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  console.log("Przed renderowaniem, breeds:", breeds);
-
-  const showBreeds = (list) => {
-    let test = Array.of(list);
-    console.log("Rozpoczęcie showBreeds z listą:", test);
-
-    Object.entries(list).forEach(([breed, subBreeds]) => {
-      // add 1 dog & image for each SUBBREED
-      if (subBreeds.length > 0) {
-        subBreeds.forEach((subBreed) => {
-          fetch(`${API_URL}/breed/${breed}/${subBreed}/images/random`)
-            .then((response) => response.json())
-            .then((img) =>
-              breedsArray.push({
-                name: `${breed} ${subBreed}`,
-                img: img.message,
-              })
-            );
-        });
-      } else {
-        // add 1 dog & image for each BREED
-        fetch(`${API_URL}/breed/${breed}/images/random`)
-          .then((response) => response.json())
-          .then((img) =>
-            breedsArray.push({
-              name: breed,
-              img: img.message,
-            })
-          );
-      }
-    });
-    // console.log(breedsArray);
-    // console.log("Zakończenie showBreeds, tabBreeds:", breedsArray);
-    setBreeds(breedsArray);
-    return breedsArray;
-  };
+  const [selectedBreed, setSelectedBreed] = useState(null);
 
   useEffect(() => {
-    // setBreeds(breedsArray);
-    // setIsLoading(false);
-    fetch(`${API_URL}/breeds/list/all`)
-      .then((breeds) => breeds.json())
-      .then((breeds) => {
-        let test = Object.entries(breeds.message).map(([breed, subBreeds]) => ({
+    const fetchBreeds = async () => {
+      try {
+        const response = await fetch(`${API_URL}/breeds/list/all`)
+          .then((breeds) => breeds.json())
+          .catch((err) => console.log("Uppps, something's wrong!", err));
+
+        const data = await response;
+        // console.log("z App: ", data);
+        const breedsList = Object.entries(data.message).map(([breed, subBreeds]) => ({
           breed,
           subBreeds,
         }));
-        console.log("Dane otrzymane z API:", test);
-        // showBreeds(breeds.message);
-      })
-      .catch((err) => console.log("Uppps, something's wrong!", err));
+        const result = await showBreeds(breedsList);
+        console.log("rezultat showBreeds(data):   ", result);
+        setBreeds(result);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Błąd podczas pobierania ras:", error);
+      }
+    };
+    fetchBreeds();
+  }, []);
 
-    // console.log("Breeds w useEffect:", breeds);
-  });
+  const handleBreedSelect = (breed) => {
+    setSelectedBreed(breed);
+  };
+
+  const showBreeds = async (list) => {
+    const breedsArray = new Array();
+    const promises = [];
+
+    list.forEach((item) => {
+      // add 1 dog & image for SUBBREED
+      if (item.subBreeds.length > 0) {
+        item.subBreeds.forEach((subBreed) => {
+          promises.push(
+            fetch(`${API_URL}/breed/${item.breed}/${subBreed}/images/random`)
+              .then((response) => response.json())
+              .then((img) =>
+                breedsArray.push({
+                  name: `${item.breed} ${subBreed}`,
+                  img: img.message,
+                })
+              )
+          );
+        });
+      } else {
+        // add 1 dog & image for BREED
+        promises.push(
+          fetch(`${API_URL}/breed/${item.breed}/images/random`)
+            .then((response) => response.json())
+            .then((img) =>
+              breedsArray.push({
+                name: item.breed,
+                img: img.message,
+              })
+            )
+        );
+      }
+    });
+    await Promise.all(promises);
+    return breedsArray;
+  };
 
   if (isLoading) {
     return <div>Ładowanie danych...</div>;
   }
 
-  // console.log("Breeds przed przekazaniem do komponentu:", breeds);
-
   return (
     <div className="App">
       {/* <RandomDog /> */}
-      {/* {console.log(breedsArray)} */}
-
-      <DogBreeds breeds={breeds} />
+      <BreedDisplay selectefBreed={selectedBreed} />
+      <DogBreeds breeds={breeds} onBreedSelect={handleBreedSelect} />
     </div>
   );
 }
