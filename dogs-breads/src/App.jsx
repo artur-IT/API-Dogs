@@ -76,7 +76,7 @@ function App() {
     return breedsArray;
   };
 
-  if (isLoading) return <div>Ładowanie danych...</div>;
+  if (isLoading) return <div className="loading">Wait, the dogs are running...</div>;
 
   return (
     <div className="wrap">

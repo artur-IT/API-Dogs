@@ -14,9 +14,8 @@ function RandomDog() {
 
   return (
     <>
-      <div className="random">
-        <h1>Random Dog for Today</h1>
-        <div className="breed__dog">{dogImage && <img src={dogImage} alt="Random dog" />}</div>;
+      <div className="random_dog">
+        <div className="breed__dog">{dogImage && <img src={dogImage} alt="Random dog" />}</div>;<h1>Random Dog for Today</h1>
       </div>
     </>
   );
