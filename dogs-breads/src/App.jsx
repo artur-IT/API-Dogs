@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import RandomDog from "../src/components/RandomDog";
+import RandomDog from "../src/components/RandomDog";
 import DogBreeds from "../src//components/DogBreeds";
 import BreedDisplay from "./components/BreedDisplay";
 
@@ -35,9 +35,7 @@ function App() {
     fetchBreeds();
   }, []);
 
-  const handleBreedSelect = (breed) => {
-    setSelectedBreed(breed);
-  };
+  const handleBreedSelect = (breed) => setSelectedBreed(breed);
 
   // Create list of breeds with name & image
   const showBreeds = async (list) => {
@@ -81,9 +79,8 @@ function App() {
   if (isLoading) return <div>Ładowanie danych...</div>;
 
   return (
-    <div className="App">
-      {/* <RandomDog /> */}
-      <BreedDisplay selectefBreed={selectedBreed} />
+    <div className="wrap">
+      {selectedBreed ? <BreedDisplay selectedBreed={selectedBreed} /> : <RandomDog />}
       <DogBreeds breeds={breeds} onBreedSelect={handleBreedSelect} />
     </div>
   );
