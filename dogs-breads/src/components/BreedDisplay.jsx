@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 function BreedDisplay({ selectedBreed }) {
   if (!selectedBreed) return null;
 
@@ -10,12 +8,5 @@ function BreedDisplay({ selectedBreed }) {
     </div>
   );
 }
-
-BreedDisplay.propTypes = {
-  selectedBreed: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-  }),
-};
 
 export default BreedDisplay;

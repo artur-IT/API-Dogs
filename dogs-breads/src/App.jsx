@@ -13,18 +13,19 @@ function App() {
   useEffect(() => {
     const fetchBreeds = async () => {
       try {
+        // Get all breeds
         const response = await fetch(`${API_URL}/breeds/list/all`)
           .then((breeds) => breeds.json())
           .catch((err) => console.log("Uppps, something's wrong!", err));
 
         const data = await response;
-        // console.log("z App: ", data);
+
+        // Change data structure to match the desired format
         const breedsList = Object.entries(data.message).map(([breed, subBreeds]) => ({
           breed,
           subBreeds,
         }));
         const result = await showBreeds(breedsList);
-        console.log("rezultat showBreeds(data):   ", result);
         setBreeds(result);
         setIsLoading(false);
       } catch (error) {
@@ -38,6 +39,7 @@ function App() {
     setSelectedBreed(breed);
   };
 
+  // Create list of breeds with name & image
   const showBreeds = async (list) => {
     const breedsArray = new Array();
     const promises = [];
@@ -71,13 +73,12 @@ function App() {
         );
       }
     });
+    // Wait for all data to be loaded
     await Promise.all(promises);
     return breedsArray;
   };
 
-  if (isLoading) {
-    return <div>Ładowanie danych...</div>;
-  }
+  if (isLoading) return <div>Ładowanie danych...</div>;
 
   return (
     <div className="App">
