@@ -1,5 +1,5 @@
-![screen](/public/img/screenshot_1.png)
-![screen](/public/img/screenshot_2.png)
+![screen](public/img/screenshot_1.png)
+![screen](public/img/screenshot_2.png)
 
 # Dogs Breeds
 
