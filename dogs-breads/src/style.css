@@ -1,14 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 body {
-  /* --first-color: #a706ff;
-  --second-color: #370eff;
-  --third-color: #097dff;
-  --fourth-color: #f2cb05;
-  --five-color: #370eff; */
   margin: 0;
   padding: 0;
-  background-image: url("/public/wave-haikei.svg");
+  background-image: url("/img/wave-haikei.svg");
   background-repeat: repeat-y;
   background-color: #fff;
   color: var(--text-color);
@@ -41,19 +36,17 @@ body {
   flex-direction: column;
   margin-top: 20px;
   margin-left: 50px;
-  /* border: 2px solid blue; */
 }
 
 .breeds_list_select {
-  margin-top: 10px;
   padding: 8px 10px;
   font-size: 1.1rem;
+  color: #fff;
   text-transform: capitalize;
   text-align: left;
   border-radius: 5px;
-  background-color: yellow;
-  border: 3px solid #0044ff;
-  box-shadow: 0px 0px 15px 5px #0066ff;
+  background-color: #0066ff;
+  border: 3px solid #0066ff;
 }
 
 .description {
@@ -97,6 +90,7 @@ img {
   body {
     background-repeat: repeat;
     background-color: #fff;
+    background-size: 2%;
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23cccccc' fill-opacity='0.54' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
   }
   .wrap {
@@ -113,7 +107,12 @@ img {
   }
   .breeds_list_select {
     font-size: 1rem;
-    margin-top: 0;
+    outline: none;
+  }
+
+  select:active,
+  select:focus {
+    outline: none;
   }
   img {
     max-width: 80%;
@@ -126,16 +125,26 @@ img {
     margin-top: 5px;
   }
   .description {
+    width: 185px;
+    font-size: 1rem;
     background-color: #fff;
-    padding: 20px;
+    padding: 15px;
   }
 }
 
 @media (max-height: 450px) and (orientation: landscape) {
+  .wrap {
+    margin-top: 10px;
+  }
+
   img {
     max-height: 65vh;
   }
   h1 {
     margin-top: 0px;
+  }
+  select:active,
+  select:focus {
+    outline: none;
   }
 }
