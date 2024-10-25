@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("/public/wave-haikei.svg");
+  background-image: url("/img/wave-haikei.svg");
   background-repeat: repeat-y;
   background-color: #fff;
   color: var(--text-color);
@@ -47,7 +47,6 @@ body {
   border-radius: 5px;
   background-color: #0066ff;
   border: 3px solid #0066ff;
-  /* box-shadow: 0px 0px 15px 5px #0066ff; */
 }
 
 .description {
@@ -107,37 +106,9 @@ img {
     margin-left: 0;
   }
   .breeds_list_select {
-    /* font-size: 1rem; */
-    outline: none;
-
-    width: 200px;
-    height: 40px;
-    font-size: 16px;
-    background-size: 20px;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-appearance: menulist-button;
-  }
-
-  /* Wymuszenie stylów na natywnym selekcie */
-  select.breeds_list_select::-ms-expand {
-    display: none;
-  }
-
-  .breeds_list_select select:focus {
+    font-size: 1rem;
     outline: none;
   }
-
-  /* Style dla rozwiniętej listy */
-  .breeds_list_select option {
-    font-size: 16px;
-    padding: 5px;
-    max-height: 300px;
-  }
-
-  select {
-    size: 5; /* ogranicza ilość widocznych opcji */
-  }
-  /* -----------   */
 
   select:active,
   select:focus {
