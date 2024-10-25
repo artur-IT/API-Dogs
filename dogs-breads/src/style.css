@@ -1,11 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 body {
-  /* --first-color: #a706ff;
-  --second-color: #370eff;
-  --third-color: #097dff;
-  --fourth-color: #f2cb05;
-  --five-color: #370eff; */
   margin: 0;
   padding: 0;
   background-image: url("/public/wave-haikei.svg");
@@ -41,7 +36,6 @@ body {
   flex-direction: column;
   margin-top: 20px;
   margin-left: 50px;
-  /* border: 2px solid blue; */
 }
 
 .breeds_list_select {
@@ -132,6 +126,10 @@ img {
 }
 
 @media (max-height: 450px) and (orientation: landscape) {
+  .wrap {
+    margin-top: 10px;
+  }
+
   img {
     max-height: 65vh;
   }
