@@ -1,66 +1,48 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 
+// Showing select option of list all breeds
 function DogBreeds({ breeds, onBreedSelect }) {
-  console.log("DogBreeds otrzymał breeds:", breeds);
-
-  const [selectedBreed, setSelectedBreed] = useState(null);
+  const [selectedBreed, setSelectedBreed] = useState("-- select breed --");
   const [localBreeds, setLocalBreeds] = useState([]);
-  // breeds.forEach((item) => console.log(item.name));
 
   useEffect(() => {
-    console.log("useEffect breeds:", breeds);
     if (Array.isArray(breeds) && breeds.length > 0) {
       setLocalBreeds(breeds);
-      setSelectedBreed(breeds[0]);
-      // Informujemy komponent nadrzędny o pierwszym wyborze
-      onBreedSelect?.(breeds[0]);
+      if (!selectedBreed) {
+        onBreedSelect(breeds[0]);
+      }
     }
-  }, [breeds, onBreedSelect]);
+  }, [breeds, selectedBreed, onBreedSelect]);
 
-  // const testArray = [
-  //   { name: "Bulldog", img: "url_do_obrazka" },
-  //   { name: "Labrador", img: "url_do_obrazka" },
-  // ];
-
+  // Handle selected name of breed
   const handleBreedChange = (event) => {
     const selectedBreedName = event.target.value;
     const breed = localBreeds.find((b) => b.name === selectedBreedName);
-    setSelectedBreed(breed);
+    setSelectedBreed(breed.name);
     onBreedSelect(breed);
   };
 
-  // Dodajemy log stanu lokalnego
-  console.log("localBreeds:", localBreeds);
-
-  // Pokazujemy informację o ładowaniu tylko gdy nie mamy danych
-  if (!localBreeds.length) {
-    return <div>Ładowanie ras...</div>;
-  }
+  if (!localBreeds.length) return <div>Loading breeds...</div>;
 
   return (
-    <div className="breeds__link">
-      <form id="select" className="breeds__link__do">
-        <select id="breeds" value={selectedBreed?.name || ""} onChange={handleBreedChange}>
+    <div className="breeds_list_container">
+      <form id="select" className="breeds_list_dog">
+        <select id="breeds" className="breeds_list_select" value={selectedBreed} onChange={handleBreedChange}>
+          <option className="first_option">{selectedBreed}</option>
           {localBreeds.map((breed) => (
-            <option key={breed.name} className="breeds__link__do" value={breed.name} name={breed.name}>
+            <option key={breed.name} className="breeds_list_option" value={breed.name} name={breed.name}>
               {breed.name}
             </option>
           ))}
         </select>
       </form>
+      <div className="description">
+        <p>Have you seen a dog today but you don&#39;t know what breed it is?</p>
+        <p>
+          Check it here! <img src="./arrow-up.png" alt="arrow up" className="arrow" />{" "}
+        </p>
+      </div>
     </div>
   );
 }
-
-DogBreeds.propTypes = {
-  breeds: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      image: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
-
 export default DogBreeds;

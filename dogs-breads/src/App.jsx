@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import RandomDog from "../src/components/RandomDog";
+import RandomDog from "../src/components/RandomDog";
 import DogBreeds from "../src//components/DogBreeds";
 import BreedDisplay from "./components/BreedDisplay";
 
@@ -13,18 +13,19 @@ function App() {
   useEffect(() => {
     const fetchBreeds = async () => {
       try {
+        // Get all breeds
         const response = await fetch(`${API_URL}/breeds/list/all`)
           .then((breeds) => breeds.json())
           .catch((err) => console.log("Uppps, something's wrong!", err));
 
         const data = await response;
-        // console.log("z App: ", data);
+
+        // Change data structure to match the desired format
         const breedsList = Object.entries(data.message).map(([breed, subBreeds]) => ({
           breed,
           subBreeds,
         }));
         const result = await showBreeds(breedsList);
-        console.log("rezultat showBreeds(data):   ", result);
         setBreeds(result);
         setIsLoading(false);
       } catch (error) {
@@ -34,10 +35,9 @@ function App() {
     fetchBreeds();
   }, []);
 
-  const handleBreedSelect = (breed) => {
-    setSelectedBreed(breed);
-  };
+  const handleBreedSelect = (breed) => setSelectedBreed(breed);
 
+  // Create list of breeds with name & image
   const showBreeds = async (list) => {
     const breedsArray = new Array();
     const promises = [];
@@ -71,18 +71,16 @@ function App() {
         );
       }
     });
+    // Wait for all data to be loaded
     await Promise.all(promises);
     return breedsArray;
   };
 
-  if (isLoading) {
-    return <div>Ładowanie danych...</div>;
-  }
+  if (isLoading) return <div className="loading">Wait, the dogs are running...</div>;
 
   return (
-    <div className="App">
-      {/* <RandomDog /> */}
-      <BreedDisplay selectefBreed={selectedBreed} />
+    <div className="wrap">
+      {selectedBreed ? <BreedDisplay selectedBreed={selectedBreed} /> : <RandomDog />}
       <DogBreeds breeds={breeds} onBreedSelect={handleBreedSelect} />
     </div>
   );
