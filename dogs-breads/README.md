@@ -26,7 +26,7 @@ A project using an API to retrieve dog breeds and then present them.
 
 - function to create array with name dog & img
 
-![screen](/dogs-breeds/public/img/showBreeds.png)
+![screen](public/img/showBreeds.png)
 
 ## 💭 Improvements?
 
