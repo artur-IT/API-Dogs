@@ -4,7 +4,7 @@ function BreedDisplay({ selectedBreed }) {
   return (
     <div className="display_dog">
       <img src={selectedBreed.img} alt={selectedBreed.name} />
-      <h2>{selectedBreed.name.toUpperCase()}</h2>
+      <h1>{selectedBreed.name}</h1>
     </div>
   );
 }

@@ -1,43 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Roboto&family=Roboto+Condensed:wght@300&display=swap");
-
-/* Color Theme Swatches in Hex */
-.LINE-sitcker-&-DEVILCASE-1-hex {
-  color: #364abf;
-}
-.LINE-sitcker-&-DEVILCASE-2-hex {
-  color: #718bd9;
-}
-.LINE-sitcker-&-DEVILCASE-3-hex {
-  color: #70bf4b;
-}
-.LINE-sitcker-&-DEVILCASE-4-hex {
-  color: #f2e205;
-}
-.LINE-sitcker-&-DEVILCASE-5-hex {
-  color: #f2cb05;
-}
+@import url("https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 body {
-  --bg-color: #88a5bf;
-  --text-color: #3876f2;
-  --second-color: #ac44f2;
-  --third-color: #f2a007;
-  --fourth-color: #f28705;
+  /* --first-color: #a706ff;
+  --second-color: #370eff;
+  --third-color: #097dff;
+  --fourth-color: #f2cb05;
+  --five-color: #370eff; */
   margin: 0;
   padding: 0;
-  /* background-image: url("bg.jpg"); */
-  background-color: var(--fourth-color);
+  background-image: url("/public/wave-haikei.svg");
+  background-repeat: repeat-y;
+  background-color: #fff;
   color: var(--text-color);
   font-family: "Lato", sans-serif;
 }
 .wrap {
   margin: 0 auto;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   min-width: 30px;
   max-width: 1000px;
   text-align: center;
-  /* border: 1px solid red; */
 }
 
 .loading {
@@ -61,16 +45,22 @@ body {
 }
 
 .breeds_list_select {
-  padding: 5px 7px;
+  margin-top: 10px;
+  padding: 8px 10px;
   font-size: 1.1rem;
   text-transform: capitalize;
   text-align: left;
   border-radius: 5px;
-  background-color: #fffb00;
+  background-color: yellow;
+  border: 3px solid #0044ff;
+  box-shadow: 0px 0px 15px 5px #0066ff;
 }
+
 .description {
   max-width: 230px;
+  margin-top: 20px;
   font-size: 1.3rem;
+  color: #777;
 }
 
 .random_dog {
@@ -81,28 +71,33 @@ body {
 }
 
 h1 {
-  margin-top: 0px;
+  margin-top: 10px;
+  font-family: "Atma", sans-serif;
+  font-weight: normal;
+  text-transform: capitalize;
 }
 
 img {
   max-width: 100%;
   max-height: 400px;
   margin-bottom: 20px;
-  border: 1px solid black;
-  box-shadow: 10px 10px 15px 5px #444;
+  border: 3px solid #000;
+  box-shadow: 10px 10px 5px 1px #555;
 }
 
 .arrow {
-  width: 20px;
+  width: 15px;
   box-shadow: none;
   margin: 0;
   border: none;
+  opacity: 0.6;
 }
 
 @media (max-width: 450px) and (orientation: portrait) {
   body {
-    background-image: url("bg.jpg");
-    background-size: 250%;
+    background-repeat: repeat;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23cccccc' fill-opacity='0.54' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
   }
   .wrap {
     display: flex;
@@ -117,12 +112,30 @@ img {
     margin-left: 0;
   }
   .breeds_list_select {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    margin-top: 0;
   }
   img {
     max-width: 80%;
     margin: 0 auto;
     margin-bottom: 20px;
-    box-shadow: 5px 5px 10px 5px #444;
+    box-shadow: 10px 10px 5px 1px #555;
+  }
+  h1 {
+    font-size: 2rem;
+    margin-top: 5px;
+  }
+  .description {
+    background-color: #fff;
+    padding: 20px;
+  }
+}
+
+@media (max-height: 450px) and (orientation: landscape) {
+  img {
+    max-height: 65vh;
+  }
+  h1 {
+    margin-top: 0px;
   }
 }

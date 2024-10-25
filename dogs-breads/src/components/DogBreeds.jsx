@@ -22,7 +22,7 @@ function DogBreeds({ breeds, onBreedSelect }) {
     onBreedSelect(breed);
   };
 
-  if (!localBreeds.length) return <div>Ładowanie ras...</div>;
+  if (!localBreeds.length) return <div>Loading breeds...</div>;
 
   return (
     <div className="breeds_list_container">
