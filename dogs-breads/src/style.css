@@ -107,21 +107,37 @@ img {
     margin-left: 0;
   }
   .breeds_list_select {
-    width: 210px;
-    max-height: 50vh;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    /* font-size: 1rem; */
+    outline: none;
 
+    width: 200px;
+    height: 40px;
     font-size: 16px;
+    background-size: 20px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-appearance: menulist-button;
+  }
+
+  /* Wymuszenie stylów na natywnym selekcie */
+  select.breeds_list_select::-ms-expand {
+    display: none;
+  }
+
+  .breeds_list_select select:focus {
     outline: none;
   }
 
-  /* Style dla natywnego menu select na Androidzie */
+  /* Style dla rozwiniętej listy */
   .breeds_list_select option {
     font-size: 16px;
-    padding: 8px;
+    padding: 5px;
+    max-height: 300px;
   }
+
+  select {
+    size: 5; /* ogranicza ilość widocznych opcji */
+  }
+  /* -----------   */
 
   select:active,
   select:focus {
