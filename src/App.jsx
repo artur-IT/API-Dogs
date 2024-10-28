@@ -80,6 +80,7 @@ function App() {
 
   return (
     <div className="wrap">
+      <h1 className="title">Dog breeds</h1>
       {selectedBreed ? <BreedDisplay selectedBreed={selectedBreed} /> : <RandomDog />}
       <DogBreeds breeds={breeds} onBreedSelect={handleBreedSelect} />
     </div>

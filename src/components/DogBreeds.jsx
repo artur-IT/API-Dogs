@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 // Showing select option of list all breeds
 function DogBreeds({ breeds, onBreedSelect }) {
-  const [selectedBreed, setSelectedBreed] = useState(null);
+  const [selectedBreed, setSelectedBreed] = useState("-- select breed --");
   const [localBreeds, setLocalBreeds] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function DogBreeds({ breeds, onBreedSelect }) {
       <form id="select" className="breeds_list_dog">
         <select id="breeds" className="breeds_list_select" value={selectedBreed} onChange={handleBreedChange}>
           {/* <option className="first_option">{selectedBreed}</option> */}
-          <option value="">-- select breed --</option>
+          <option value="">{selectedBreed}</option>
           {localBreeds.map((breed) => (
             <option key={breed.name} className="breeds_list_option" value={breed.name} name={breed.name}>
               {breed.name}

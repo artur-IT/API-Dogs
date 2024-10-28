@@ -11,12 +11,18 @@ body {
 }
 .wrap {
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 170px;
   display: flex;
   justify-content: center;
   min-width: 30px;
   max-width: 1000px;
   text-align: center;
+}
+
+.title {
+  position: absolute;
+  top: 50px;
+  font-size: 3rem;
 }
 
 .loading {
@@ -98,6 +104,12 @@ img {
     flex-direction: column;
     max-width: 100vw;
     font-size: 0.7rem;
+    margin-top: 20px;
+  }
+  .title {
+    position: static;
+    font-size: 2.5rem;
+    margin-bottom: 0;
   }
   .breeds_list_container {
     display: flex;
@@ -136,7 +148,9 @@ img {
   .wrap {
     margin-top: 10px;
   }
-
+  .title {
+    display: none;
+  }
   img {
     max-height: 65vh;
   }
