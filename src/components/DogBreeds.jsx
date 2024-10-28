@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 // Showing select option of list all breeds
 function DogBreeds({ breeds, onBreedSelect }) {
-  const [selectedBreed, setSelectedBreed] = useState("-- select breed --");
+  const [selectedBreed, setSelectedBreed] = useState(null);
   const [localBreeds, setLocalBreeds] = useState([]);
 
   useEffect(() => {
@@ -18,8 +18,9 @@ function DogBreeds({ breeds, onBreedSelect }) {
   const handleBreedChange = (event) => {
     const selectedBreedName = event.target.value;
     const breed = localBreeds.find((b) => b.name === selectedBreedName);
+    const selectedBreed = breeds.find((breed) => breed.name === event.target.value);
     setSelectedBreed(breed.name);
-    onBreedSelect(breed);
+    onBreedSelect(selectedBreed);
   };
 
   if (!localBreeds.length) return <div>Loading breeds...</div>;
@@ -28,7 +29,8 @@ function DogBreeds({ breeds, onBreedSelect }) {
     <div className="breeds_list_container">
       <form id="select" className="breeds_list_dog">
         <select id="breeds" className="breeds_list_select" value={selectedBreed} onChange={handleBreedChange}>
-          <option className="first_option">{selectedBreed}</option>
+          {/* <option className="first_option">{selectedBreed}</option> */}
+          <option value="">-- select breed --</option>
           {localBreeds.map((breed) => (
             <option key={breed.name} className="breeds_list_option" value={breed.name} name={breed.name}>
               {breed.name}
