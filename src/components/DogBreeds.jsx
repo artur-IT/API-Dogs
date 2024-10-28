@@ -40,8 +40,10 @@ function DogBreeds({ breeds, onBreedSelect }) {
       </form>
       <div className="description">
         <p>Have you seen a dog today but you don&#39;t know what breed it is?</p>
+        <p>or maybe</p>
+        <p>You would like to have a dog but you don&#39;t know what kind?</p>
         <p>
-          Check it here! <img src="./img/arrow-up.png" alt="arrow up" className="arrow" />{" "}
+          Check here! <img src="./img/arrow-up.png" alt="arrow up" className="arrow" />{" "}
         </p>
       </div>
     </div>

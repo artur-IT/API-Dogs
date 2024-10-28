@@ -114,7 +114,7 @@ img {
   .breeds_list_container {
     display: flex;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-left: 0;
   }
   .breeds_list_select {
@@ -148,6 +148,9 @@ img {
   .wrap {
     margin-top: 10px;
   }
+  .breeds_list_container {
+    align-items: flex-start;
+  }
   .title {
     display: none;
   }
@@ -160,5 +163,11 @@ img {
   select:active,
   select:focus {
     outline: none;
+  }
+  .description {
+    max-width: 240px;
+    font-size: 1.1rem;
+    margin: 5px 0;
+    text-align: left;
   }
 }
